@@ -1,12 +1,29 @@
+import React, { useEffect, useState } from 'react';
+import { firestore } from "../services/firebase";
+
 function QuestionSection () {
+    const [title, setTitle] = useState("")
+    const [questionText, setQuestionText] = useState("")
+    const [imageUri, setImageUri] = useState("")
+    const questionId = "balances" //Should probably be done through URL and routing with useParams()
+
+    useEffect( () => {
+        const snapshot = firestore.collection("Questions").doc(questionId).get()
+        const questionData = snapshot.data()
+        const questionDetails = questionData[questionId]
+        setTitle(questionDetails[questionId].questions.title)
+        setQuestionText(questionData[questionId].questions.fullquestion.question)
+        setImageUri(questionData[questionId].questions.fullquestion.questionImage)
+    },[])
+
     return (
         <div className="col-sm">
-            <h3 className="text-center">Question</h3>
+            <h3 className="text-center">{title}</h3>
             <div className="p-3 mb-2 bg-light">
                 <div className="text-center">
-                    <img className="mb-4 rounded img-fluid" src="https://i-want-to-study-engineering.org/figs/balances.png" alt="" />
+                    <img className="mb-4 rounded img-fluid" src={imageUri} alt="" />
                 </div>
-                <p>Three balances are supported on rigid pivots and connected by two flexible light strings as shown in the diagram above.</p>
+                <p>{questionText}</p>
             </div>
         </div>
     );
