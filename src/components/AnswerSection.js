@@ -5,17 +5,17 @@ function AnswerSection() {
         <div className="p-3 mb-2 bg-light">
             <div className="row">
                 <div className="col-sm d-grid gap-2">
-                    <button type="button" className="btn btn-secondary mb-2 p-4">Secondary</button>
-                    <button type="button" className="btn btn-secondary mb-2 p-4">Secondary</button>
+                    <button type="button" className="btn btn-secondary mb-2 p-4">10 kg</button>
+                    <button type="button" className="btn btn-secondary mb-2 p-4">1260 kg</button>
                 </div>
                 <div className="col-sm d-grid gap-2">
-                    <button type="button" className="btn btn-secondary mb-2 p-4">Secondary</button>
-                    <button type="button" className="btn btn-secondary mb-2 p-4">Secondary</button>
+                    <button type="button" className="btn btn-secondary mb-2 p-4">1 17/28 kg</button>
+                    <button type="button" className="btn btn-secondary mb-2 p-4">62 2/9 kg</button>
                 </div>
             </div>
             <div className="row">
                 <div className="col-sm text-center">
-                    <button type="button" className="btn btn-primary p-4">Primary</button>
+                    <button type="button" className="btn btn-primary p-4">Check my answer</button>
                 </div>
             </div>
         </div>
