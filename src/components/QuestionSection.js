@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { firestore } from "../services/firebase";
+import React, { useEffect, useState } from 'react'
+import { firestore } from '../services/firebase'
 
 function QuestionSection () {
     const [title, setTitle] = useState("")
@@ -7,13 +7,13 @@ function QuestionSection () {
     const [imageUri, setImageUri] = useState("")
     const questionId = "balances" //Should probably be done through URL and routing with useParams()
 
-    useEffect( () => {
-        const snapshot = firestore.collection("Questions").doc(questionId).get()
+    useEffect(async () => {
+        const snapshot = await firestore.collection("Questions").doc(questionId).get()
         const questionData = snapshot.data()
         const questionDetails = questionData[questionId]
         setTitle(questionDetails[questionId].questions.title)
-        setQuestionText(questionData[questionId].questions.fullquestion.question)
-        setImageUri(questionData[questionId].questions.fullquestion.questionImage)
+        setQuestionText(questionDetails[questionId].questions.fullquestion.question)
+        setImageUri(questionDetails[questionId].questions.fullquestion.questionImage)
     },[])
 
     return (
