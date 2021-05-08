@@ -58,7 +58,7 @@ function Chatroom() {
                         <div style={{
                             minHeight: 52,
                             width: 600,
-                            backgroundColor: userId === localMessage.uid ? 'blue' : (localMessage.like === true ? 'yellow' : 'red'),
+                            backgroundColor: userId === localMessage.uid ? '#007bff' : (localMessage.like === true ? 'yellow' : '#dc3545'),
                             marginTop: 24,
                             paddingLeft: 24,
                             paddingRight: 24,
