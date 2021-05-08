@@ -73,7 +73,7 @@ function Video() {
                             <input type="text" className="form-control" id="inputText" placeholder="your message goes here" value={text} onChange={(value) => {
                             setText(value.target.value)
                         }} />
-                            <button class="btn btn-primary mt-1 mr-1" type="submit">Send</button>
+                            <button className="btn btn-primary mt-1 mr-1" type="submit">Send</button>
                             <button type="button" class="btn btn-outline-primary mt-1 mx-1" data-toggle="collapse" data-target="#confused" aria-pressed="false">Cancel</button>
                         </div>
                     </form>

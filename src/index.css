@@ -13,3 +13,15 @@ code {
 }
 
 .hide[aria-expanded="true"] {display: none;}
+
+.upload {
+  border: 1px solid #007bff;
+  color: #007bff;
+  background: white;
+  display: inline-block;
+  padding: 3px 6px;
+}
+
+input[type="file"] {
+  display: none;
+}
