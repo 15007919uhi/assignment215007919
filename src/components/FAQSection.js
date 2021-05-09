@@ -50,7 +50,7 @@ function FAQSection() {
     }, [firestore]);
     return (
         <div>
-            <div style={{ display: 'flex', flex: 1, height: '100vh', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
                 <div style={{ flex: 1, marginLeft: 24, marginRight: 24, overflow: 'auto', marginBottom: 24 }}>
                     {localMessages.map((localMessage) => (
                         <div style={{ display: 'flex', flex: 1, justifyContent: localMessage.like === true ? 'flex-end' : 'flex-start' }}>
@@ -64,7 +64,7 @@ function FAQSection() {
                                     paddingRight: 24,
                                     borderRadius: 12
                                 }}>
-                                    <p>{(localMessage.content) && (localMessage.like === true)}</p>
+                                    <p>{(localMessage.content)}</p>
                                     {localMessage?.image && localMessage.image.length > 0 &&
                                         <img style={{ width: '100%', height: 'auto', marginBottom: 24 }} src={localMessage.image} alt="" />}
                                 </div>}

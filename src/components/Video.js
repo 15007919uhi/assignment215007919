@@ -54,6 +54,7 @@ function Video() {
                 </button>
             </div>
             <div className="modal-body">
+                <FAQSection />
                 <img className="mb-4 rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/assignment215007919.appspot.com/o/balances2.jpg?alt=media&token=740b8178-2915-48c7-b734-c002cd95ba3f" alt="" />
                 <button type="button" className="btn btn-danger float-end hide" data-toggle="collapse" data-target="#confused" aria-pressed="false">Confused</button>
                 <div id="confused" className="collapse">

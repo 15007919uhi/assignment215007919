@@ -122,13 +122,6 @@ function Chatroom() {
                             setText("")
                             setLocalImage(null)
                         }}>
-                        <input style={{
-                            flex: 11,
-                            height: 32,
-                            fontSize: 28
-                        }} type="text" value={text} onChange={(value) => {
-                            setText(value.target.value)
-                        }} />
                         <label for="file-upload" className="upload"><i className="bi bi-camera"></i></label>
                         <input
                             id="file-upload"
@@ -144,6 +137,13 @@ function Chatroom() {
                                 setLocalImage(image)
                             }}
                         />
+                        <input style={{
+                            flex: 11,
+                            height: 32,
+                            fontSize: 20
+                        }} type="text" placeholder="your message here" value={text} onChange={(value) => {
+                            setText(value.target.value)
+                        }} />
                         <button type='submit' style={{
                             flex: 1,
                             backgroundColor: '#007bff',

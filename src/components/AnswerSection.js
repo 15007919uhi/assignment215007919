@@ -16,6 +16,7 @@ function AnswerSection() {
             <div className="row">
                 <div className="col-sm text-center">
                     <button type="button" className="btn btn-primary p-4">Check my answer</button>
+                    <button className="btn btn-primary float-end rounded-circle"><i className="bi bi-percent"></i></button>
                 </div>
             </div>
         </div>
