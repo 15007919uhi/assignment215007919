@@ -11,7 +11,7 @@ function Chatroom() {
     const [userId, setUserId] = useState("")
     const [localMessages, setLocalMessages] = useState([])
     const [localImage, setLocalImage] = useState(null)
-    const adminList = ["DMZByKSOYJh1c9fVvAmUnAnjWAm2"]
+    const adminList = ["DMZByKSOYJh1c9fVvAmUnAnjWAm2", "vmTQZUzy5QftB0xU80Zlv5EM1Il2"]
 
     const firestore = firebase.firestore()
     const storage = firebase.storage()
