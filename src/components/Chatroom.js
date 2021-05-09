@@ -11,7 +11,7 @@ function Chatroom() {
     const [userId, setUserId] = useState("")
     const [localMessages, setLocalMessages] = useState([])
     const [localImage, setLocalImage] = useState(null)
-    const adminList = ["ppFSpuZIHpM5W2I2wjEgyMrokXi2"]
+    const adminList = ["DMZByKSOYJh1c9fVvAmUnAnjWAm2"]
 
     const firestore = firebase.firestore()
     const storage = firebase.storage()
@@ -67,7 +67,7 @@ function Chatroom() {
                                 <p>{localMessage.content}</p>
                                 {localMessage?.image && localMessage.image.length > 0 &&
                                     <img style={{ width: '100%', height: 'auto', marginBottom: 24 }} src={localMessage.image} alt="" />}
-                                {(userId !== localMessage.uid) && (adminList.includes(userId)) && (localMessage.like === false) &&
+                                {(userId === localMessage.uid) && (adminList.includes(userId)) && (localMessage.like === false) &&
                                     <button style={{
                                         backgroundColor: 'white',
                                         color: 'black',
@@ -85,21 +85,11 @@ function Chatroom() {
                                         await firestore.collection("Chats").doc(localMessage.mid).update({
                                             like: true
                                         })
-                                    }}>Like</button>}
+                                    }}>Add to FAQs</button>}
                             </div>
                         </div>
                     ))}
                 </div>
-                <button style={{
-                    backgroundColor: 'black',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                    borderWidth: 0
-                }} onClick={async () => {
-                    await firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).set(false);
-                    firebase.auth().signOut()
-                }}>Sign out</button>
                 <div style={{ display: 'flex', flexDirection: 'row', marginTop: 24 }}>
                     <form style={{
                         display: 'flex',

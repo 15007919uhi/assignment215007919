@@ -4,6 +4,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import 'firebase/storage';
 import 'firebase/database';
+import FAQSection from './FAQSection';
 
 function Video() {
     const [text, setText] = useState("")
