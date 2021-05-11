@@ -28,7 +28,6 @@ function AnswerSection() {
                 setLocalAnswers(answers)
             },
         });
-
     }, [])
 
     return (
