@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a recreation of the i-want-to-study-engineering.org page for the question 'balances', created as part of the Web Applications Development module for MSc Web Technologies. This project demonstrates Firebase integration in a React app, utilising Google authentication, Firestore, Firebase Storage and Realtime Database to build the page and allow user interaction, additionally using Bootstrap to create a clean visual layout.
 
-## Available Scripts
+The application aims to fulfil the assessment criteria by implementing the following three features:
+  1. Live chat support between the user and an admin, including image upload support
+  2. The ability for the admin to add a message from chat to an FAQs page
+  3. Hints in the forms of percentages shown on each answer, showing how many other users have selected each answer
 
-In the project directory, you can run:
+# Methodology
 
-### `npm start`
+The app was created using npx-create-react-app and edited in Visual Studio Code. Initial setup included the installation of Firebase tools and Bootstrap scripts and integration of previous work carried out through chapters of the Web Applications Development module tutorials. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In order to create the final app, the main question page was broken down into several smaller components; these included sections for the question, answers, and hint buttons, in addition to a component for the video explanation, implemented as a modal opened by clicking on the relevant button. This modal also includes the FAQ section, where admin explanations are displayed. A second modal was implemented for opening the chatroom component, accessed through the chat button in the upper right of the page, with a second button in the upper left allowing users to logout and be redirected to the login component.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The following sections demonstrate the way each key feature was implemented, showing tickets from the project kanban board on Github, screenshots of code and the structure of relevant Firebase collections, with full explanations.
 
-### `npm test`
+## Live Chat
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The implementation of live chat support began with the creation of a Firestore collection titled "Chats". 
 
-### `npm run build`
+![image](https://user-images.githubusercontent.com/70897032/117646888-351fad80-b184-11eb-8fd8-1f3db4c51f93.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here each message is stored as a document with a randomly generated name, including fields for message content, image (if included with the user's message), a timestamp, user ID and a "like", denoting whether the admin has selected this message as worth adding to the FAQ. This structure was used in chapter 5 of the WAD module for an example of a chatroom with a like button for individual messages, and seemed suitable to modify for this app to implement the "add to FAQ" button.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://user-images.githubusercontent.com/70897032/117646723-0275b500-b184-11eb-8a72-0f944b9ef8a3.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## FAQs
 
-### `npm run eject`
+## Hinting
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Evaluation
