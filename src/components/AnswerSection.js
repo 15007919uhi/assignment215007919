@@ -10,7 +10,6 @@ function AnswerSection() {
     const [title4, setTitle4] = useState("")
     const [userId, setUserId] = useState("")
     const answerId = "balances" //Should probably be done through URL and routing with useParams()
-    const [localAnswers, setLocalAnswers] = useState([])
 
     useEffect(async () => {
         const snapshot = await firestore.collection("Answers").doc(answerId).get()
@@ -21,14 +20,16 @@ function AnswerSection() {
         setTitle3(answerDetails[answerId].answer.ans3.title)
         setTitle4(answerDetails[answerId].answer.ans4.title)
         setUserId(firebase.auth()?.currentUser?.uid)
-        var query = firestore.collection('Answers');
-        query.onSnapshot({
-            next: (querySnapshot) => {
-                let answers = []
-                setLocalAnswers(answers)
-            },
-        });
     }, [])
+
+    // function showHints() {
+    //     var hints = document.getElementById("hint");
+    //     if (hints.style.display === 'none') {
+    //         hints.style.display = 'block';
+    //     } else {
+    //         hints.style.display = 'none';
+    //     }
+    // }
 
     return (
         <div className="col-12">
@@ -41,30 +42,34 @@ function AnswerSection() {
                                 await firestore.collection("Answers").doc(answerId).update({
                                     ans1: firebase.firestore.FieldValue.arrayUnion(userId)
                                 })
-                            }}>{title1}</button>
+                            }}><h5>{title1} <span className="badge bg-dark" id="hint">75%</span></h5>
+                            </button>
                             <button type="button" id="ans2" className="btn btn-secondary mb-2 p-4" onClick={async () => {
                                 await firestore.collection("Answers").doc(answerId).update({
                                     ans2: firebase.firestore.FieldValue.arrayUnion(userId)
                                 })
-                            }}>{title2}</button>
+                            }}><h5>{title2} <span className="badge bg-dark" id="hint">25%</span></h5>
+                            </button>
                         </div>
                         <div className="col-sm d-grid gap-2">
                             <button type="button" id="ans3" className="btn btn-secondary mb-2 p-4" onClick={async () => {
                                 await firestore.collection("Answers").doc(answerId).update({
                                     ans3: firebase.firestore.FieldValue.arrayUnion(userId)
                                 })
-                            }}>{title3}</button>
+                            }}><h5>{title3} <span className="badge bg-dark" id="hint">0%</span></h5>
+                            </button>
                             <button type="button" id="ans4" className="btn btn-secondary mb-2 p-4" onClick={async () => {
                                 await firestore.collection("Answers").doc(answerId).update({
                                     ans4: firebase.firestore.FieldValue.arrayUnion(userId)
                                 })
-                            }}>{title4}</button>
+                            }}><h5>{title4} <span className="badge bg-dark" id="hint">0%</span></h5>
+                            </button>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm text-center">
                             <button type="submit" className="btn btn-primary p-4">Check my answer</button>
-                            <button type="button" className="btn btn-primary float-end"><i className="bi bi-percent"></i></button>
+                            <button type="button" className="btn btn-primary float-end" onClick="showHints()"><i className="bi bi-percent"></i></button>
                         </div>
                     </div>
                 </form>
