@@ -14,7 +14,6 @@ function AnswerSection() {
     const [ans3, setAns3] = useState("")
     const [ans4, setAns4] = useState("")
     const answerId = "balances"
-    const hintsId = "hints"
 
     useEffect(async () => {
         const snapshot = await firestore.collection("Answers").doc(answerId).get()
@@ -29,6 +28,14 @@ function AnswerSection() {
         setAns2(answerData.users2)
         setAns3(answerData.users3)
         setAns4(answerData.users4)
+
+        const total = ans1+ans2+ans3+ans4;
+        console.log(total)
+        const per1 = (ans1/total * 100).toFixed(0) + '%'
+        const per2 = (ans2/total * 100).toFixed(0) + '%'
+        const per3 = (ans3/total * 100).toFixed(0) + '%'
+        const per4 = (ans4/total * 100).toFixed(0) + '%'
+        console.log(per1, per2, per3, per4)
     }, [])
 
     // function showHints() {
