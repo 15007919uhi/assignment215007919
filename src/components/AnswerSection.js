@@ -9,7 +9,12 @@ function AnswerSection() {
     const [title3, setTitle3] = useState("")
     const [title4, setTitle4] = useState("")
     const [userId, setUserId] = useState("")
-    const answerId = "balances" //Should probably be done through URL and routing with useParams()
+    const [ans1, setAns1] = useState("")
+    const [ans2, setAns2] = useState("")
+    const [ans3, setAns3] = useState("")
+    const [ans4, setAns4] = useState("")
+    const answerId = "balances"
+    const hintsId = "hints"
 
     useEffect(async () => {
         const snapshot = await firestore.collection("Answers").doc(answerId).get()
@@ -20,6 +25,10 @@ function AnswerSection() {
         setTitle3(answerDetails[answerId].answer.ans3.title)
         setTitle4(answerDetails[answerId].answer.ans4.title)
         setUserId(firebase.auth()?.currentUser?.uid)
+        setAns1(answerData.users1)
+        setAns2(answerData.users2)
+        setAns3(answerData.users3)
+        setAns4(answerData.users4)
     }, [])
 
     // function showHints() {
@@ -39,30 +48,29 @@ function AnswerSection() {
                     <div className="row">
                         <div className="col-sm d-grid gap-2">
                             <button type="button" id="ans1" className="btn btn-secondary mb-2 p-4" onClick={async () => {
-                                await firestore.collection("Answers").doc(answerId).update({
-                                    ans1: firebase.firestore.FieldValue.arrayUnion(userId)
-                                })
-                            }}><h5>{title1} <span className="badge bg-dark" id="hint">75%</span></h5>
+                                await firestore.collection("Answers").doc(answerId).update({ 
+                                    users1: firebase.firestore.FieldValue.increment(1)})
+                            }}><h5>{title1} <span className="badge bg-dark" id="hint">{ans1}</span></h5>
                             </button>
                             <button type="button" id="ans2" className="btn btn-secondary mb-2 p-4" onClick={async () => {
                                 await firestore.collection("Answers").doc(answerId).update({
-                                    ans2: firebase.firestore.FieldValue.arrayUnion(userId)
+                                    users2: firebase.firestore.FieldValue.increment(1)
                                 })
-                            }}><h5>{title2} <span className="badge bg-dark" id="hint">25%</span></h5>
+                            }}><h5>{title2} <span className="badge bg-dark" id="hint">{ans2}</span></h5>
                             </button>
                         </div>
                         <div className="col-sm d-grid gap-2">
                             <button type="button" id="ans3" className="btn btn-secondary mb-2 p-4" onClick={async () => {
                                 await firestore.collection("Answers").doc(answerId).update({
-                                    ans3: firebase.firestore.FieldValue.arrayUnion(userId)
+                                    users3: firebase.firestore.FieldValue.increment(1)
                                 })
-                            }}><h5>{title3} <span className="badge bg-dark" id="hint">0%</span></h5>
+                            }}><h5>{title3} <span className="badge bg-dark" id="hint">{ans3}</span></h5>
                             </button>
                             <button type="button" id="ans4" className="btn btn-secondary mb-2 p-4" onClick={async () => {
                                 await firestore.collection("Answers").doc(answerId).update({
-                                    ans4: firebase.firestore.FieldValue.arrayUnion(userId)
+                                    users4: firebase.firestore.FieldValue.increment(1)
                                 })
-                            }}><h5>{title4} <span className="badge bg-dark" id="hint">0%</span></h5>
+                            }}><h5>{title4} <span className="badge bg-dark" id="hint">{ans4}</span></h5>
                             </button>
                         </div>
                     </div>
