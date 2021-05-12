@@ -54,8 +54,16 @@ function Video() {
                 </button>
             </div>
             <div className="modal-body">
+                <div className="row">
+                    <div className="col-3 bg-light">
+                        <h4 className="text-center">FAQs</h4>
+                        <div className="mx-auto">
                 <FAQSection />
-                <img className="mb-4 rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/assignment215007919.appspot.com/o/balances2.jpg?alt=media&token=740b8178-2915-48c7-b734-c002cd95ba3f" alt="" />
+                </div>
+                </div>
+
+                <div class="col-8">
+                <img style={{ width: '100%', height: 'auto', marginBottom: 24 }} className="mb-4 rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/assignment215007919.appspot.com/o/balances2.jpg?alt=media&token=740b8178-2915-48c7-b734-c002cd95ba3f" alt="" />
                 <button type="button" className="btn btn-danger float-end hide" data-toggle="collapse" data-target="#confused" aria-pressed="false">Confused</button>
                 <div id="confused" className="collapse">
                     <form onSubmit={async (e) => {
@@ -82,6 +90,8 @@ function Video() {
                 </div>
                 <p>Slide: <span className="text-primary">1 2 3</span> ( <span className="text-primary">prev</span> | <span className="text-primary">replay</span> | <span className="text-primary">next</span> | <span className="text-primary">-5s</span> | <span className="text-primary">+5s</span> )</p>
                 <p>Question: <span className="text-primary">1</span> ( <span className="text-primary">prev</span> | <span className="text-primary">replay</span>  | <span className="text-primary">next</span> )</p>
+            </div>
+            </div>
             </div>
         </div>
 

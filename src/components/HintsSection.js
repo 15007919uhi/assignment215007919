@@ -39,7 +39,7 @@ function HintsSection() {
                 </div>
             </div>
             <div className="modal fade" id="hintModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-lg" role="document">
+                <div className="modal-dialog modal-xl" role="document">
                     <div className="modal-content">
                         <Video />
                     </div>
