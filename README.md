@@ -25,8 +25,31 @@ Here each message is stored as a document with a randomly generated name, includ
 
 ![image](https://user-images.githubusercontent.com/70897032/117646723-0275b500-b184-11eb-8a72-0f944b9ef8a3.png)
 
+Simple UI was created as part of the chapter 5 tutorial, which I further modified to be more clean and readable, using a simple Bootstrap icon for the image upload button. 
+
+In order to send and receive messages through the Firestore database, React's useState and useEffect hooks were used to query the Firestore "Chats" collection and set the user's local messages. The content of the messages is then displayed in the DOM, identifying which messages should be displayed as belonging to the current user and the conversation partner depending on the matching UIDs. These are differentiated through colours and placement on the page.
+
+(Put image here)
+
+On sending a new message, the various fields are initialised, generating the current time for timestamp, setting the "like" boolean to false and pushing the message content and current user ID to the database as a new document. If an image is uploaded, it is first uploaded to Firebase Storage, then the download URL provided is taken and pushed to Firestore with the other values. In order to clear the text box and selected image after a message is sent, these values are then set to their initial blank state.
+
+![image](https://user-images.githubusercontent.com/70897032/118116689-7c0ade80-b3e2-11eb-9bb4-a979087dc122.png)
+
 ## FAQs
 
+Implementation of the FAQs feature closely connected with the chat feature, as noted by the "like" field on chat messages in the database. This feature also required the creation of an admin list, which, for the purposes of this assignment, is simply an array of UIDs listed in the Chatroom.js file. In a fully developed version of this app with a larger userbase, an admin list could also be stored in Firestore for the sake of security. 
+
+![image](https://user-images.githubusercontent.com/70897032/118117395-79f54f80-b3e3-11eb-828c-4a2cfa058218.png)
+![image](https://user-images.githubusercontent.com/70897032/118117422-824d8a80-b3e3-11eb-8039-8d368c750286.png)
+
+Implementation of FAQs on the page itself required creation of an FAQSection component, featuring the same code from the Chatroom page in order to load all messages from Firestore. Instead of multiple chatboxes for different users, this component simply uses one chat box per FAQ item, showing only items in the "Chats" collection that have the "like" boolean set to true. 
+
+![image](https://user-images.githubusercontent.com/70897032/118117795-f5ef9780-b3e3-11eb-9d6b-a5f99cfe7788.png)
+
+This component is then displayed inside a narrow column in the Video modal. As this prototype site does not feature working videos, it did not seem worth creating unique videos for each button on the page in order to demonstrate this feature. If I were to develop this application further to make this possible, each individual video could have an ID that would be attached to the initial help message sent to the admin and to any further messages, allowing each FAQ item to be viewed on the relevant video only. Further work could allow the FAQ section to be collapsible (or hidden when no FAQs exist) so as not to be obtrusive to users not facing the same problems.
+
 ## Hinting
+
+
 
 # Evaluation
