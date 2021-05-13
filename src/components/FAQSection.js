@@ -51,7 +51,7 @@ function FAQSection() {
     return (
         <div>
             <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
-                <div style={{ flex: 1, marginLeft: 24, marginRight: 24, overflow: 'auto', marginBottom: 24 }}>
+                <div style={{ flex: 1, marginLeft: 0, marginRight: 0, overflow: 'auto', marginBottom: 24 }}>
                     {localMessages.map((localMessage) => (
                         <div style={{ display: 'flex', flex: 1, justifyContent: localMessage.like === true ? 'flex-end' : 'flex-start' }}>
                             {(localMessage.like === true) &&

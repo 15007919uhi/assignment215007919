@@ -57,9 +57,7 @@ function Video() {
                 <div className="row">
                     <div className="col-3 bg-light">
                         <h4 className="text-center">FAQs</h4>
-                        <div className="mx-auto">
                 <FAQSection />
-                </div>
                 </div>
 
                 <div class="col-8">
