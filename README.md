@@ -62,6 +62,10 @@ My initial plan was to have a user's ID added to an array under each of these he
 
 ![image](https://user-images.githubusercontent.com/70897032/118119729-bbd3c500-b3e6-11eb-916c-55991ba64845.png)
 
-Following this, the values for each user field was accessed through React Hooks and totalled to get an overall number of users, with each individual user quantity divided by this number and multiplied by 100 to get a percentage. With percentage values set, these were then displayed using Bootstrap badges on top of the answer buttons. In order to display these badges, a button was added to the lower right of the answer section, which toggles these badges when clicked.
+Following this, the values for each user field was accessed through React Hooks and totalled to get an overall number of users, with each individual user quantity divided by this number and multiplied by 100 to get a percentage. With percentage values set, these were then displayed using Bootstrap badges on top of the answer buttons. In order to display these badges, a button was added to the lower right of the answer section, which toggles these badges when clicked using hooks
 
 # Evaluation
+
+I am satisfied with my implementation of these three features, which allowed me to build on previous work carried out for the module tutorials as well as experimenting independently with new ideas. I feel I was able to utilise Firebase well in organising and accessing the stored data, and neatly break down the page components for clear coding. It was helpful for me to plan out each component in advance and gradually build the final page focusing on one feature at a time and I was able to get them operating roughly according to the standard I set with my original plans.
+
+There are areas of this application that could be improved on to better meet the needs of a customer, primarily in implementing private chats to administrators, rather than the currently used public chat, in addition to previously mentioned ideas such as unique video pages for each question, and further styling of the chat UI could be helpful for users. Overall I feel this project meets the requirements for the assignment and reflects a standard I am proud of. 
