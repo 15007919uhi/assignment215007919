@@ -13,6 +13,7 @@ function Chatroom() {
     const [localImage, setLocalImage] = useState(null)
     const adminList = ["DMZByKSOYJh1c9fVvAmUnAnjWAm2", "vmTQZUzy5QftB0xU80Zlv5EM1Il2"]
 
+    //Gets all messages
     const firestore = firebase.firestore()
     const storage = firebase.storage()
     useEffect(() => {
@@ -44,7 +45,7 @@ function Chatroom() {
                     }
                 })
 
-            //This turns off the online status
+            //Sets user status to offline
             firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).onDisconnect().set(false);
         }
     }, [firestore]);

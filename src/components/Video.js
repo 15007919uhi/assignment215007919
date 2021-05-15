@@ -12,8 +12,9 @@ function Video() {
     const [userId, setUserId] = useState("")
     const [localMessages, setLocalMessages] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
-
     const firestore = firebase.firestore()
+
+    //Gets all chat messages in order to add new help message from user
     useEffect(() => {
         setUserId(firebase.auth()?.currentUser?.uid)
         var query = firestore.collection('Chats').orderBy("timestamp", "asc");
@@ -27,25 +28,6 @@ function Video() {
                 setLocalMessages(messages)
             },
         });
-
-        if (firebase.auth().currentUser?.uid) {
-            const users = firebase.database().ref("users");
-            users.once('value')
-                .then(async (snapshot) => {
-                    const usersData = snapshot.val();
-                    const usersIds = usersData ? Object.keys(usersData) : [];
-                    if (!usersIds.includes(firebase.auth().currentUser?.uid)) {
-                        await firebase.database().ref("users/" + firebase.auth.currentUser?.uid).set({
-                            online: true
-                        });
-                    } else {
-                        await firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).set(true)
-                    }
-                })
-
-            //This turns off the online status
-            firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).onDisconnect().set(false);
-        }
     }, [firestore]);
 
     return (
@@ -63,7 +45,7 @@ function Video() {
                     </div>
 
                     <div class="col-8">
-                        { isSubmitted && <Submitted/> }
+                        {isSubmitted && <Submitted />}
                         <img style={{ width: '100%', height: 'auto', marginBottom: 24 }} className="mb-4 rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/assignment215007919.appspot.com/o/balances2.jpg?alt=media&token=740b8178-2915-48c7-b734-c002cd95ba3f" alt="" />
                         <button type="button" className="btn btn-danger float-end hide" data-toggle="collapse" data-target="#confused" aria-pressed="false">Confused</button>
                         <div id="confused" className="collapse">

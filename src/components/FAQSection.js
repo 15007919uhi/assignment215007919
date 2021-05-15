@@ -11,10 +11,11 @@ function FAQSection() {
     const [userId, setUserId] = useState("")
     const [localMessages, setLocalMessages] = useState([])
     const [localImage, setLocalImage] = useState(null)
-    const adminList = ["DMZByKSOYJh1c9fVvAmUnAnjWAm2"]
 
     const firestore = firebase.firestore()
     const storage = firebase.storage()
+
+    //Gets all messages in order to show ones with the "like" value
     useEffect(() => {
         setUserId(firebase.auth()?.currentUser?.uid)
         var query = firestore.collection('Chats').orderBy("timestamp", "asc");
@@ -28,26 +29,8 @@ function FAQSection() {
                 setLocalMessages(messages)
             },
         });
-
-        if (firebase.auth().currentUser?.uid) {
-            const users = firebase.database().ref("users");
-            users.once('value')
-                .then(async (snapshot) => {
-                    const usersData = snapshot.val();
-                    const usersIds = usersData ? Object.keys(usersData) : [];
-                    if (!usersIds.includes(firebase.auth().currentUser?.uid)) {
-                        await firebase.database().ref("users/" + firebase.auth.currentUser?.uid).set({
-                            online: true
-                        });
-                    } else {
-                        await firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).set(true)
-                    }
-                })
-
-            //This turns off the online status
-            firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).onDisconnect().set(false);
-        }
     }, [firestore]);
+
     return (
         <div>
             <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>

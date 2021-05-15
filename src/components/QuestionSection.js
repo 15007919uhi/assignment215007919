@@ -5,8 +5,9 @@ function QuestionSection () {
     const [title, setTitle] = useState("")
     const [questionText, setQuestionText] = useState("")
     const [imageUri, setImageUri] = useState("")
-    const questionId = "balances" //Should probably be done through URL and routing with useParams()
+    const questionId = "balances"
 
+    //Gets question text
     useEffect(async () => {
         const snapshot = await firestore.collection("Questions").doc(questionId).get()
         const questionData = snapshot.data()
