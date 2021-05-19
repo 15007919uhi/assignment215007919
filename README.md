@@ -48,7 +48,7 @@ Implementation of FAQs on the page itself required creation of an FAQSection com
 
 This component is then displayed inside a narrow column in the Video modal.
 
-(Put image here)
+![image](https://user-images.githubusercontent.com/70897032/118356149-d4b9b300-b56b-11eb-8e59-8f1374d88844.png)
 
 As this prototype site does not feature working videos, it did not seem worth creating unique videos for each button on the page in order to demonstrate this feature. If I were to develop this application further to make this possible, each individual video could have an ID that would be attached to the initial help message sent to the admin and to any further messages, allowing each FAQ item to be viewed on the relevant video only. Further work could allow the FAQ section to be collapsible (or hidden when no FAQs exist) so as not to be obtrusive to users not facing the same problems.
 
@@ -62,7 +62,9 @@ My initial plan was to have a user's ID added to an array under each of these he
 
 ![image](https://user-images.githubusercontent.com/70897032/118119729-bbd3c500-b3e6-11eb-916c-55991ba64845.png)
 
-Following this, the values for each user field was accessed through React Hooks and totalled to get an overall number of users, with each individual user quantity divided by this number and multiplied by 100 to get a percentage. With percentage values set, these were then displayed using Bootstrap badges on top of the answer buttons. In order to display these badges, a button was added to the lower right of the answer section, which toggles these badges when clicked using hooks
+Following this, the values for each user field was accessed through React Hooks and totalled to get an overall number of users, with each individual user quantity divided by this number and multiplied by 100 to get a percentage. With percentage values set, these were then displayed using Bootstrap badges on top of the answer buttons. In order to display these badges, a button was added to the lower right of the answer section, which toggles these badges when clicked using useState hooks, and displays the badges as shown below:
+
+![image](https://user-images.githubusercontent.com/70897032/118356982-a4741380-b56f-11eb-973b-a9f4afd01d48.png)
 
 # Evaluation
 
