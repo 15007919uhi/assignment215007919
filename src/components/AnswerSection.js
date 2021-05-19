@@ -18,6 +18,7 @@ function AnswerSection() {
     const [hint3, setHint3] = useState("")
     const [hint4, setHint4] = useState("")
     const answerId = "balances"
+    //Sets visibility of hint badges, code modified from https://forum.freecodecamp.org/t/passing-state-from-a-toggle-button-to-hide-a-div/338833
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(async () => {
@@ -51,7 +52,7 @@ function AnswerSection() {
             setHint3(per3)
             setHint4(per4)
         }
-    }, [])
+    }, [ans1, ans2, ans3, ans4])
 
     return (
         <div className="col-12">

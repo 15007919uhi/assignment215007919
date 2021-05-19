@@ -52,7 +52,7 @@ function Chatroom() {
 
     return (
         <div>
-            <div style={{ display: 'flex', flex: 1, height: '100vh', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flex: 1, height: '90vh', flexDirection: 'column' }}>
                 <div style={{ flex: 1, marginLeft: 24, marginRight: 24, overflow: 'auto', marginBottom: 24 }}>
                     {localMessages.map((localMessage) => (
                         <div style={{ display: 'flex', flex: 1, justifyContent: userId === localMessage.uid ? 'flex-end' : 'flex-start' }}>
@@ -65,6 +65,8 @@ function Chatroom() {
                                 paddingRight: 24,
                                 borderRadius: 12
                             }}>
+                                <div> {(adminList.includes(localMessage.uid)) && <b>Admin</b>} </div>
+                                <div> {(userId === localMessage.uid) && <b>You</b>}</div>
                                 <p>{localMessage.content}</p>
                                 {localMessage?.image && localMessage.image.length > 0 &&
                                     <img style={{ width: '100%', height: 'auto', marginBottom: 24 }} src={localMessage.image} alt="" />}
