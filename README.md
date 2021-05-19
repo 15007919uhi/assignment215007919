@@ -11,7 +11,13 @@ The application aims to fulfil the assessment criteria by implementing the follo
 
 The app was created using npx-create-react-app and edited in Visual Studio Code. Initial setup included the installation of Firebase tools and Bootstrap scripts and integration of previous work carried out through chapters of the Web Applications Development module tutorials. 
 
-In order to create the final app, the main question page was broken down into several smaller components; these included sections for the question, answers, and hint buttons, in addition to a component for the video explanation, implemented as a modal opened by clicking on the relevant button. This modal also includes the FAQ section, where admin explanations are displayed. A second modal was implemented for opening the chatroom component, accessed through the chat button in the upper right of the page, with a second button in the upper left allowing users to logout and be redirected to the login component.
+In order to create the final app, the main question page was broken down into several smaller components; these included sections for the question, answers, and hint buttons, in addition to a component for the video explanation, implemented as a modal opened by clicking on the relevant button. 
+
+![image](https://user-images.githubusercontent.com/70897032/118801678-2da18800-b899-11eb-945d-f041c814be17.png)
+
+This modal also includes the FAQ section, where admin explanations are displayed. A second modal was implemented for opening the chatroom component, accessed through the chat button in the upper right of the page, with a second button in the upper left allowing users to logout and be redirected to the login component.
+
+![image](https://user-images.githubusercontent.com/70897032/118802848-8c1b3600-b89a-11eb-8977-3e8ff417a278.png)
 
 The following sections demonstrate the way each key feature was implemented, showing tickets from the project kanban board on Github, screenshots of code and the structure of relevant Firebase collections, with full explanations.
 
@@ -27,9 +33,9 @@ Here each message is stored as a document with a randomly generated name, includ
 
 Simple UI was created as part of the chapter 5 tutorial, which I further modified to be more clean and readable, using a simple Bootstrap icon for the image upload button. 
 
-In order to send and receive messages through the Firestore database, React's useState and useEffect hooks were used to query the Firestore "Chats" collection and set the user's local messages. The content of the messages is then displayed in the DOM, identifying which messages should be displayed as belonging to the current user and the conversation partner depending on the matching UIDs. These are differentiated through colours and placement on the page.
+In order to send and receive messages through the Firestore database, React's useState and useEffect hooks were used to query the Firestore "Chats" collection and set the user's local messages. The content of the messages is then displayed in the DOM, identifying which messages should be displayed as belonging to the current user and the conversation partner depending on the matching UIDs. These are differentiated through colours, labels and placement on the page.
 
-(Put image here)
+![image](https://user-images.githubusercontent.com/70897032/118801418-e61afc00-b898-11eb-8efb-e7adda62a60b.png)
 
 On sending a new message, the various fields are initialised, generating the current time for timestamp, setting the "like" boolean to false and pushing the message content and current user ID to the database as a new document. If an image is uploaded, it is first uploaded to Firebase Storage, then the download URL provided is taken and pushed to Firestore with the other values. In order to clear the text box and selected image after a message is sent, these values are then set to their initial blank state.
 
@@ -58,16 +64,21 @@ Implementing the hinting percentages involved some trial and error. New fields w
 
 ![image](https://user-images.githubusercontent.com/70897032/118119689-aced1280-b3e6-11eb-9889-c7140e9bc0ba.png)
 
-My initial plan was to have a user's ID added to an array under each of these headings upon clicking an answer button, however this proved harder to implement and meant each user could only be counted once and answering the question repeatedly would not affect totals if a user revisited the page or changed their answer. My solution was to set each value to a number, and increase it by one each time the relevant button was clicked.
+My initial plan was to have a user's ID added to an array under each of these headings upon clicking an answer button, however this proved harder to implement and meant each user could only be counted once and answering the question repeatedly would not affect totals if a user revisited the page at another time or changed their answer. My solution was to set each value to a number, and increase it by one each time the relevant button was clicked.
 
 ![image](https://user-images.githubusercontent.com/70897032/118119729-bbd3c500-b3e6-11eb-916c-55991ba64845.png)
 
-Following this, the values for each user field was accessed through React Hooks and totalled to get an overall number of users, with each individual user quantity divided by this number and multiplied by 100 to get a percentage. With percentage values set, these were then displayed using Bootstrap badges on top of the answer buttons. In order to display these badges, a button was added to the lower right of the answer section, which toggles these badges when clicked using useState hooks, and displays the badges as shown below:
+Following this, the values for each user field was accessed through React Hooks and totalled to get an overall number of users, with each individual user quantity divided by this number and multiplied by 100 to get a percentage. 
+
+![image](https://user-images.githubusercontent.com/70897032/118802665-4c544e80-b89a-11eb-9309-663847ca275d.png)
+
+With percentage values set, these were then displayed using Bootstrap badges on top of the answer buttons. In order to display these badges, a button was added to the lower right of the answer section, which toggles these badges when clicked using useState hooks, and displays the badges as shown below:
 
 ![image](https://user-images.githubusercontent.com/70897032/118356982-a4741380-b56f-11eb-973b-a9f4afd01d48.png)
+![image](https://user-images.githubusercontent.com/70897032/118802733-69891d00-b89a-11eb-82be-4a38ee17e3ae.png)
 
 # Evaluation
 
-I am satisfied with my implementation of these three features, which allowed me to build on previous work carried out for the module tutorials as well as experimenting independently with new ideas. I feel I was able to utilise Firebase well in organising and accessing the stored data, and neatly break down the page components for clear coding. It was helpful for me to plan out each component in advance and gradually build the final page focusing on one feature at a time and I was able to get them operating roughly according to the standard I set with my original plans.
+I am satisfied with my implementation of these three features, which allowed me to build on previous work carried out for the module tutorials as well as experimenting independently with new ideas. I feel I was able to utilise Firebase well in organising and accessing the stored data, and neatly break down the page components for clear coding. It was helpful for me to plan out each component in advance and gradually build the final page focusing on one feature at a time and I was able to get them operating roughly according to the standard I set with my original plans, with a few previously mentioned alterations.
 
-There are areas of this application that could be improved on to better meet the needs of a customer, primarily in implementing private chats to administrators, rather than the currently used public chat, in addition to previously mentioned ideas such as unique video pages for each question, and further styling of the chat UI could be helpful for users. Overall I feel this project meets the requirements for the assignment and reflects a standard I am proud of. 
+There are areas of this application that could be improved on to better meet the needs of a customer, primarily in implementing private chats to administrators, rather than the currently used public chat, in addition to ideas mentioned previously such as unique video pages for each question, toggleable FAQs, and aesthetic changes to the chatroom UI. While there are several areas I feel could be improved upon with more complex coding and heavier utilisation of Firebase for private chats, overall I feel this project meets the requirements for the assignment and reflects a standard I am proud of. 
