@@ -66,7 +66,7 @@ function Chatroom() {
                                 borderRadius: 12
                             }}>
                                 <div> {(adminList.includes(localMessage.uid)) && <b>Admin</b>} </div>
-                                <div> {(userId === localMessage.uid) && <b>You</b>}</div>
+                                <div> {(userId === localMessage.uid) && (!adminList.includes(localMessage.uid)) && <b>You</b>}</div>
                                 <p>{localMessage.content}</p>
                                 {localMessage?.image && localMessage.image.length > 0 &&
                                     <img style={{ width: '100%', height: 'auto', marginBottom: 24 }} src={localMessage.image} alt="" />}
