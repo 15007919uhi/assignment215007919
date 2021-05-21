@@ -7,6 +7,13 @@ The application aims to fulfil the assessment criteria by implementing the follo
   2. The ability for the admin to add a message from chat to an FAQs page
   3. Hints in the forms of percentages shown on each answer, showing how many other users have selected each answer
 
+In order to run the app:
+
+```
+cd assignment215007919
+npm start
+```
+
 # Methodology
 
 The app was created using npx-create-react-app and edited in Visual Studio Code. Initial setup included the installation of Firebase tools and Bootstrap scripts and integration of previous work carried out through chapters of the Web Applications Development module tutorials. 
